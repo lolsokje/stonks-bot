@@ -1,0 +1,21 @@
+{
+  "name": "stocks-bot",
+  "version": "0.0.1",
+  "description": "A Discord bot allowing you to map channels to real-life symbols and buy/sell shares",
+  "main": "index.ts",
+  "scripts": {
+    "deploy-commands": "ts-node scripts/deploy_commands.ts",
+    "start": "nodemon index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lolsokje#0666",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1",
+    "discord-api-types": "^0.33.2",
+    "discord.js": "^13.7.0",
+    "dotenv": "^16.0.1",
+    "ts-node": "^10.8.0"
+  }
+}
