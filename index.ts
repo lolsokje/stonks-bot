@@ -1,7 +1,8 @@
-import {Permissions, Interaction} from "discord.js";
+import {Permissions, Interaction, Guild} from "discord.js";
 import {client} from './src/utils/client';
 import path from 'node:path';
 import Command from './src/interfaces/command.interface';
+import User from "./src/models/user";
 
 require('dotenv').config();
 
@@ -39,4 +40,10 @@ client.on('interactionCreate', async (interaction: Interaction) => {
 });
 
 client.login(process.env.DISCORD_TOKEN)
-    .then(() => console.log('connected'));
+    .then(() => {
+        User.sync();
+
+        const guilds = client.guilds.cache.map((guild: Guild) => `${guild.name} (${guild.id})`).join(', ');
+
+        console.log(`connected as ${client.user.username} in guilds: ${guilds}`);
+    });
